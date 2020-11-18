@@ -1,0 +1,24 @@
+package com.fabio.rest.service;
+
+import org.springframework.stereotype.Service;
+
+import com.fabio.rest.bean.BeanRichiesta;
+import com.fabio.rest.bean.BeanRisposta;
+
+@Service
+public class DettaglioService {
+
+	public DettaglioService() {
+		
+	}
+	
+	public BeanRisposta getDettaglioResponse(BeanRichiesta bean) {
+		BeanRisposta risposta=null;
+		try {
+			
+		}catch(Exception e) {
+			
+		}
+		return risposta;
+	}
+}

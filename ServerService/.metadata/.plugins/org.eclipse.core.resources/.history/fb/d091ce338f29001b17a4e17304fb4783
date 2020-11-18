@@ -1,0 +1,5 @@
+package com.fabio.rest.info;
+
+public enum LavoroEnum {
+
+}

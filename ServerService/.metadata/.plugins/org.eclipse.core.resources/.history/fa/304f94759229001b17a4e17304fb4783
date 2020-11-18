@@ -1,0 +1,47 @@
+package com.fabio.rest.controller;
+
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.fabio.rest.bean.BeanRichiesta;
+import com.fabio.rest.bean.BeanRisposta;
+import com.fabio.rest.service.DettaglioService;
+
+@RestController
+@RequestMapping(value="/DettagliLavoratoreAPI/")
+public class InfoRestController {
+
+	@Autowired
+	private DettaglioService dettService;
+	public InfoRestController() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	@RequestMapping(value="dettaglio/{nome}/and/{cognome}",method=RequestMethod.GET)
+	public BeanRisposta dettagliApi(@PathVariable String nome,@PathVariable String cognome) {
+		BeanRisposta risposta=null;
+		BeanRichiesta richiesta=null;
+		risposta=new BeanRisposta();
+		boolean esito=false;
+		try {
+			if(nome!=null && cognome!=null) {
+				esito=true;
+				richiesta=new BeanRichiesta();
+				richiesta.setNome(nome);
+				richiesta.setCognome(cognome);
+				risposta=dettService.getDettaglioResponse(richiesta);
+			}
+			
+		}catch(Exception e) {
+			esito=false;
+			e.printStackTrace();
+		}
+		if(!esito) {
+			risposta.setEsito(false);
+			risposta.setMessage("Errore interno. Impossibile procedere.");
+		}
+		return risposta;
+	}
+}

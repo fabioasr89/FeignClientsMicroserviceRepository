@@ -1,0 +1,18 @@
+package com.fabio.rest.feign;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.fabio.rest.bean.BeanRisposta;
+
+//settiamo i nostro proxy con un value corrispondente al nome dell'istanza client
+//bilanciatore del carico e l'url con il servizio che vogliamo richiamare.
+@FeignClient(value="dettagliService",url="http://localhost:8080")
+public interface DettagliServiceProxy {
+	
+	@RequestMapping(value="dettaglio/{nome}/and/{cognome}",method=RequestMethod.GET)
+	public BeanRisposta dettagliApi(@PathVariable String nome,@PathVariable String cognome);
+	
+}

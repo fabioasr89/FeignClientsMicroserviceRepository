@@ -1,0 +1,9 @@
+package com.fabio.rest.controller;
+
+public class InfoRestController {
+
+	public InfoRestController() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

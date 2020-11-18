@@ -1,0 +1,2 @@
+spring.application.name=ClientService
+logging.level.com.baeldung.cloud.openfeign.client: DEBUG
